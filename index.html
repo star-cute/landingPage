@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>هدفون بی‌سیم | صدای حرفه‌ای</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<header class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="text">
+                <h1>هدفون بی‌سیم حرفه‌ای</h1>
+                <p>تجربه صدایی شفاف، عمیق و بدون نویز با طراحی مدرن و راحت</p>
+                <div id="countdown"></div>
+                <br>
+                <a href="#buy" class="btn">همین حالا خرید کن</a>
+            </div>
+            <div class="image">
+                <img src="images/headphone.jpg" alt="هدفون حرفه‌ای">
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<section class="features">
+    <div class="container">
+        <h2>ویژگی‌های برجسته</h2>
+        <div class="cards">
+            <div class="card">🔋 عمر باتری ۴۰ ساعته</div>
+            <div class="card">🎧 حذف نویز فعال (ANC)</div>
+            <div class="card">📶 اتصال بلوتوث ۵.۲</div>
+            <div class="card">🎤 میکروفون داخلی با کیفیت HD</div>
+        </div>
+    </div>
+</section>
+
+<section class="buy" id="buy">
+    <div class="container">
+        <h2>برای داشتن بهترین صدا، همین حالا سفارش بده!</h2>
+        <a href="#contact" class="btn big">ثبت سفارش</a>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="container">
+        <h2>ارتباط با ما</h2>
+        <form id="contact-form">
+            <input type="text" placeholder="نام شما" required />
+            <input type="email" placeholder="ایمیل" required /><br>
+            <textarea placeholder="پیام شما" required></textarea><br>
+            <button type="submit">ارسال</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 | فروشگاه رسمی هدفون | تمامی حقوق محفوظ است</p>
+</footer>
+
+<script>
+    // تایمر شمارش معکوس
+    const countdown = document.getElementById("countdown");
+    const endDate = new Date().getTime() + 3 * 24 * 60 * 60 * 1000; // 3 روز بعد
+    const timer = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = endDate - now;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        countdown.innerHTML = `⏳ تخفیف تا: ${days} روز ${hours} ساعت ${minutes} دقیقه ${seconds} ثانیه`;
+        if (distance < 0) {
+            clearInterval(timer);
+            countdown.innerHTML = "⛔ مهلت تخفیف به پایان رسید!";
+        }
+    }, 1000);
+
+    // اسلایدر نظرات
+    const slides = document.querySelectorAll(".slide");
+    let currentSlide = 0;
+    setInterval(() => {
+        slides[currentSlide].classList.remove("active");
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add("active");
+    }, 3000);
+
+    // ارسال فرم تماس
+    document.getElementById("contact-form").addEventListener("submit", e => {
+        e.preventDefault();
+        alert("پیام شما با موفقیت ارسال شد!");
+        e.target.reset();
+    });
+</script>
+</body>
+</html>
